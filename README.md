@@ -11,7 +11,7 @@ Title: Lazarus
 ```
 <img height="20" src="https://img.shields.io/github/languages/count/runnova/NovaOS"/> <img height="20" src="https://img.shields.io/github/last-commit/runnova/dev"/>
 
-<img width="1606" height="910" alt="image" src="https://github.com/user-attachments/assets/5cbd7a84-11fb-4565-9e86-e8fe0cc12788" />
+<img width="1606" height="910" alt="image" src="https://github.com/user-attachments/assets/220c70a7-158d-4795-af47-69c8ca485f0a" />
 <br>
 <h1>About</h1>
 NovaOS is a web system designed for any modern device with a browser. NovaOS apps can perform complex tasks more easily than native apps by simulating an abstract virtual system within the browser. 
