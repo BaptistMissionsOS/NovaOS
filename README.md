@@ -45,8 +45,8 @@ GitHub Pages: [https://runnova.github.io/NovaOS/](https://runnova.github.io/Nova
 ## Self hosting NovaOS locally
 1. Clone the repository
 ```sh
-git clone https://github.com/yourname/yourrepo.git
-cd yourrepo
+git clone https://github.com/runnova/NovaOS.git
+cd NovaOS
 ```
 2. Start a local server (you can python -m http.server 8000python -m http.server 8000use anything like NodeJS, Nginx or python as it works on any static server)
 ```sh
