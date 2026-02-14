@@ -48,7 +48,7 @@ GitHub Pages: [https://runnova.github.io/NovaOS/](https://runnova.github.io/Nova
 git clone https://github.com/runnova/NovaOS.git
 cd NovaOS
 ```
-2. Start a local server (you can python -m http.server 8000python -m http.server 8000use anything like NodeJS, Nginx or python as it works on any static server)
+2. Start a local server (you can use anything like NodeJS, Nginx or python as it works on any static server)
 ```sh
 python -m http.server 8000
 ```
