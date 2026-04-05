@@ -1261,13 +1261,10 @@ async function initializeOS() {
 async function installdefaultapps() {
 	nonotif = true;
 	gid("edison").showModal();
-	gid("lazarus").showModal()
 	if (gid('startupterms')) {
 		gid('startupterms').innerText = "Just a moment...";
 	}
 	gid("appdmod").close();
-	setTimeout(() => gid("lazarus").classList.add("closeEffect"), 2700);
-	setTimeout(() => gid("lazarus").close(), 3000);
 
 	const maxRetries = 3;
 	const failedApps = [];
