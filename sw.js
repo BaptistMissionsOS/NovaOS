@@ -2,8 +2,8 @@ const CACHE_NAME = 'app-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  'https://cdn.jsdelivr.net/npm/mime-db@1.52.0/db.json',
-  'https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap',
+  'assets/json/mime-db.json',
+  'assets/css/fonts-local.css',
   '/system32.js',
   '/style.css',
   '/n.png',

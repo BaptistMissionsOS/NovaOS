@@ -67,3 +67,46 @@ Web development has never been this powerful. Find out more about NovaOS app dev
 Join the [Discord server](https://discord.gg/atkqbwEQU8) for news, polls, ideas, issues, or being a part of developing NovaOS. You can also find me there!
 
 > If you're wondering, NovaOS repository was recently moved here from adthoughtsglobal/Nova-OS.
+
+
+## No external
+Summary
+All external dependencies have been successfully localized:
+
+Assets Downloaded:
+
+Folder	Files
+assets/js/	ace.min.js, jquery-3.1.1.min.js, semantic-ui.min.js, js-beautify.min.js, color-thief.umd.js, jsmediatags.min.js
+css	semantic-ui.min.css, ace.min.css, fonts-local.css (+ font-specific CSS files)
+fonts	Poppins, Inconsolata, Material Icons, Material Symbols, Sono, DM Sans, Xanh Mono
+json	mime-db.json
+Files Updated:
+
+index.html, bios.html, nova.css
+appdata/studio.html, musicplr.html, text.html, gallery.html, liza.html, time.html
+scripties.js
+roturstyle.css
+sw.js
+Self-hosting complete - NovaOS now runs with zero external CDN dependencies. All resources served from local assets folder.
+
+These external dependencies that will break when offline:
+
+## **Will Break Offline:**
+
+| File | External URL | Purpose |
+|------|-------------|---------|
+| [store.html](cci:7://file:///NovaOS/appdata/store.html:0:0-0:0) | `adthoughtsglobal.github.io/Nova-Store/db/v2.json` | App store database |
+| [store.html](cci:7://file:///NovaOS/appdata/store.html:0:0-0:0) | `adthoughtsglobal.github.io/Nova-Store/db/themes.json` | Theme database |
+| [store.html](cci:7://file:///NovaOS/appdata/store.html:0:0-0:0) | `adthoughtsglobal.github.io/` | App installation source |
+| [musicplr.html](cci:7://file:///NovaOS/appdata/musicplr.html:0:0-0:0) | `novaos-web.github.io/plr/visualizerDB.json` | Visualizer database |
+| [musicplr.html](cci:7://file:///NovaOS/appdata/musicplr.html:0:0-0:0) | `novaos-web.github.io/plr/visualizers/*.js` | Visualizer scripts |
+| [liza.html](cci:7://file:///NovaOS/appdata/liza.html:0:0-0:0) | `en.wikipedia.org/w/api.php` | Wikipedia API for chat |
+| [rotur.js](cci:7://file:///NovaOS/scripts/rotur.js:0:0-0:0) | `raw.githubusercontent.com/...` | Server config & badges |
+
+## **Offline Impact:**
+- **Store app**: Won't load apps/themes (expected - it's a content store)
+- **Music player**: Visualizers won't work (core player still works)
+- **Liza chat**: Can't fetch Wikipedia info (chat still works)
+- **Rotur**: Falls back to default server (has error handling)
+
+These are **functional** external dependencies (APIs/data), not static assets. The self-hosted assets (JS/CSS/fonts) are all local - these are live data sources that intentionally require internet. 

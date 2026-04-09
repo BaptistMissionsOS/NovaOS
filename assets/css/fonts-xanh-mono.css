@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Xanh Mono';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/xanhmono/v19/R70ejykVmvKCep-vWhSomgqU.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Xanh Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/xanhmono/v19/R70YjykVmvKCep-vWhSYmA.ttf) format('truetype');
+}

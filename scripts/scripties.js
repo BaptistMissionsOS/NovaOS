@@ -106,7 +106,7 @@ const hardcodedMimeTypes = {
 
 async function getMimeType(extension) {
 	if (globalmimeDb == null) {
-		const mimeDbUrl = 'https://cdn.jsdelivr.net/npm/mime-db@1.52.0/db.json';
+		const mimeDbUrl = 'assets/json/mime-db.json';
 		try {
 			const responseformimedb = await fetch(mimeDbUrl);
 			if (!responseformimedb.ok) throw new Error('Network response was not ok');

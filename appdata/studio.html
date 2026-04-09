@@ -121,28 +121,58 @@
 		.ui.dropdown.navitem .dropdown.icon {
 			color: var(--col-txt1) !important;
 		}
+		/* Ace Editor Monokai Theme */
+		.ace-monokai .ace_gutter {
+			background: #2F3129;
+			color: #8F908A
+		}
+		.ace-monokai {
+			background-color: #272822;
+			color: #F8F8F2
+		}
+		.ace-monokai .ace_cursor {
+			color: #F8F8F0
+		}
+		.ace-monokai .ace_marker-layer .ace_selection {
+			background: #49483E
+		}
+		.ace-monokai .ace_print-margin {
+			width: 1px;
+			background: #464741
+		}
+		.ace-monokai .ace_tag {
+			color: #F92672
+		}
+		.ace-monokai .ace_string {
+			color: #E6DB74
+		}
+		.ace-monokai .ace_keyword {
+			color: #F92672
+		}
+		.ace-monokai .ace_comment {
+			color: #75715E
+		}
+		.ace-monokai .ace_constant.ace_numeric {
+			color: #AE81FF
+		}
+		#editor {
+			width: 100%;
+			height: 100%;
+			font-size: 14px;
+			font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+		}
 	</style>
 
-	<link rel="stylesheet"
-		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Poppins:wght@400;700&display=swap"
-		rel="stylesheet">
-	<link rel="stylesheet" type="text/css"
-		href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ace-builds@1.31.1/css/ace.min.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.9/beautify-html.min.js"></script>
-
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"
-		integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js"></script>
+	<link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/fonts-local.css">
+	<link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/assets/css/semantic-ui.min.css">
+	<link rel="stylesheet" href="http://127.0.0.1:8000/assets/css/ace.min.css">
+	<script src="http://127.0.0.1:8000/assets/js/js-beautify.min.js"></script>
+	<script src="http://127.0.0.1:8000/assets/js/jquery-3.1.1.min.js"></script>
+	<script src="http://127.0.0.1:8000/assets/js/semantic-ui.min.js"></script>
+	<script src="http://127.0.0.1:8000/assets/js/ace.min.js"></script>
 </head>
 
 <body>
-	<script src="https://cdn.jsdelivr.net/npm/ace-builds@1.31.1/src-min-noconflict/ace.min.js"></script>
 
 	<nav class="nav" id="nav">
 		<div class="ui dropdown navitem">
@@ -205,9 +235,8 @@
 	</nav>
 	<div class="editorsection">
 		<div class="codepart editorpart">
-			<div id="editor">
-				<textarea id="editortextarea"></textarea>
-			</div>
+			<div id="editor"></div>
+			<textarea id="editortextarea" style="display:none; width:100%; height:100%;"></textarea>
 		</div>
 	</div>
 
@@ -302,10 +331,10 @@
 			mode = "edit";
 		}
 
-		var wordwrap = false, currentmode = 'html';
+		var currentmode = 'html';
 
 		document.getElementsByClassName("editorpart")[0].addEventListener('resize', function (event) {
-			editor.resize()
+			if (editor && editor.resize) editor.resize();
 		});
 
 		function gid(x) {
@@ -313,15 +342,20 @@
 		}
 
 		var editor;
+		var wordwrap = false;
 		try {
-
 			$('.ui.dropdown').dropdown({
 				action: 'hide'
-			})
+			});
 
 			editor = ace.edit("editor");
 			editor.setTheme("ace/theme/monokai");
+			editor.session.setUseWrapMode(true);
+			wordwrap = true;
+			let wordwrapdisp = gid("wordwrapdisp");
+			if (wordwrapdisp) wordwrapdisp.innerHTML = "On";
 		} catch (e) {
+			console.error("Ace editor failed to load:", e);
 			editor = {
 				getValue: () => {
 					return document.getElementById("editortextarea").value;
@@ -329,17 +363,13 @@
 				setValue: (newValue) => {
 					document.getElementById("editortextarea").value = newValue;
 				}
-			}
+			};
 			document.getElementById("editortextarea").style.display = "block";
 		}
 
 		function showFindBox() {
-			editor.execCommand("find");
+			if (editor.execCommand) editor.execCommand("find");
 		}
-
-		editor.session.setUseWrapMode(true);
-		wordwrap = true;
-		wordwrapdisp.innerHTML = "On";
 
 
 		function togglewordwrap() {
