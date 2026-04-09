@@ -76,14 +76,17 @@ All external dependencies have been successfully localized:
 Assets Downloaded:
 
 Folder	Files
-assets/js/	ace.min.js, jquery-3.1.1.min.js, semantic-ui.min.js, js-beautify.min.js, color-thief.umd.js, jsmediatags.min.js
+assets/js/	ace.min.js, jquery-3.1.1.min.js, jquery-3.6.4.min.js, semantic-ui.min.js, js-beautify.min.js, color-thief.umd.js, jsmediatags.min.js, interact.min.js, jscolor.js
 css	semantic-ui.min.css, ace.min.css, fonts-local.css (+ font-specific CSS files)
 fonts	Poppins, Inconsolata, Material Icons, Material Symbols, Sono, DM Sans, Xanh Mono
-json	mime-db.json
+json	mime-db.json, store-v2.json, themes.json, visualizerDB.json, rotur-info.json, rotur-badges.json
+images	cameraSample.png
+visualizers	blobs.js, classic.js, disc.js, fluid.js, fractal.js, lines.js, waveform.js
+store	Empty directory for app installations
 Files Updated:
 
 index.html, bios.html, nova.css
-appdata/studio.html, musicplr.html, text.html, gallery.html, liza.html, time.html
+appdata/studio.html, musicplr.html, text.html, gallery.html, liza.html, time.html, files.html, settings.html, camera.html, store.html
 scripties.js
 roturstyle.css
 sw.js
@@ -96,6 +99,8 @@ These external dependencies that will break when offline:
 | File | External URL | Purpose |
 |------|-------------|---------|
 | [liza.html](cci:7://file:///NovaOS/appdata/liza.html:0:0-0:0) | `en.wikipedia.org/w/api.php` | Wikipedia API for chat |
+| [liza.html](cci:7://file:///NovaOS/appdata/liza.html:0:0-0:0) | `raw.githubusercontent.com/LDNOOBW/.../en` | Profanity filter word list |
+| [rotur.js](cci:7://file:///NovaOS/scripts/rotur.js:0:0-0:0) | `social.rotur.dev/claim_daily` | Daily credit API call |
 
 ## **Now Available Offline:**
 
@@ -121,10 +126,43 @@ These external dependencies that will break when offline:
 | rotur.js | `raw.githubusercontent.com/Mistium/Origin-OS/.../info.json` | `../assets/json/rotur-info.json` |
 | rotur.js | `raw.githubusercontent.com/RoturTW/Badges/.../badges.json` | `../assets/json/rotur-badges.json` |
 
+### Files App
+
+| File | Previous URL | Local Path |
+|------|--------------|------------|
+| files.html | `unpkg.com/interactjs/dist/interact.min.js` | `../assets/js/interact.min.js` |
+
+### Studio App
+
+| File | Previous URL | Local Path |
+|------|--------------|------------|
+| studio.html | `http://127.0.0.1:8000/assets/css/fonts-local.css` | `../assets/css/fonts-local.css` |
+| studio.html | `http://127.0.0.1:8000/assets/css/semantic-ui.min.css` | `../assets/css/semantic-ui.min.css` |
+| studio.html | `http://127.0.0.1:8000/assets/css/ace.min.css` | `../assets/css/ace.min.css` |
+| studio.html | `http://127.0.0.1:8000/assets/js/js-beautify.min.js` | `../assets/js/js-beautify.min.js` |
+| studio.html | `http://127.0.0.1:8000/assets/js/jquery-3.1.1.min.js` | `../assets/js/jquery-3.1.1.min.js` |
+| studio.html | `http://127.0.0.1:8000/assets/js/semantic-ui.min.js` | `../assets/js/semantic-ui.min.js` |
+| studio.html | `http://127.0.0.1:8000/assets/js/ace.min.js` | `../assets/js/ace.min.js` |
+
+### Settings App
+
+| File | Previous URL | Local Path |
+|------|--------------|------------|
+| settings.html | `code.jquery.com/jquery-3.6.4.min.js` | `../assets/js/jquery-3.6.4.min.js` |
+| settings.html | `jscolor.com/release/2.5/jscolor-2.5.2/jscolor.js` | `../assets/js/jscolor.js` |
+
+### Camera App
+
+| File | Previous URL | Local Path |
+|------|--------------|------------|
+| camera.html | `runnova.github.io/cameraSample.png` | `../assets/images/cameraSample.png` |
+
 ### Downloaded Assets
 
 | Location | Files |
 |----------|-------|
 | `assets/json/` | store-v2.json, themes.json, visualizerDB.json, rotur-info.json, rotur-badges.json |
+| `assets/js/` | interact.min.js, jquery-3.6.4.min.js, jscolor.js |
 | `assets/js/visualizers/` | blobs.js, classic.js, disc.js, fluid.js, fractal.js, lines.js, waveform.js |
+| `assets/images/` | cameraSample.png |
 | `assets/store/` | Empty directory for app installations |
