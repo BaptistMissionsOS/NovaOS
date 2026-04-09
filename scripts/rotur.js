@@ -51,7 +51,7 @@ class RoturExtension {
 
     this.callJson = {};
 
-    fetch("https://raw.githubusercontent.com/Mistium/Origin-OS/main/Resources/info.json")
+    fetch("../assets/json/rotur-info.json")
       .then((response) => {
         if (response.ok) return response.json();
         else throw new Error('Network response was not ok');
@@ -75,7 +75,7 @@ class RoturExtension {
 
   async _getBadges() {
     try {
-      const response = await fetch("https://raw.githubusercontent.com/RoturTW/Badges/main/badges.json");
+      const response = await fetch("../assets/json/rotur-badges.json");
       if (!response.ok) throw new Error('Network response was not ok');
 
       const data = await response.json();

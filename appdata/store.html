@@ -1122,7 +1122,7 @@
 		function loadThemes() {
 			const container = document.getElementById("themeslist");
 
-			fetch('https://adthoughtsglobal.github.io/Nova-Store/db/themes.json')
+			fetch('../assets/json/themes.json')
 				.then(response => response.json())
 				.then(data => {
 					container.innerHTML = '';
@@ -1290,7 +1290,7 @@
 
 		async function installapp(x, appName, obj, method = "icononly") {
 			let prefixurl = "";
-			if (!x.src.startsWith("http")) prefixurl = "https://adthoughtsglobal.github.io/";
+			if (!x.src.startsWith("http")) prefixurl = "../assets/store/";
 			try {
 				if (obj) {
 					if (method == "icononly") obj.innerText = "hourglass_top";
@@ -1352,7 +1352,7 @@
 
 
 		async function fetchAppData() {
-			return await fetch('https://adthoughtsglobal.github.io/Nova-Store/db/v2.json')
+			return await fetch('../assets/json/store-v2.json')
 				.then(response => {
 					if (!response.ok) throw new Error('Network response was not ok');
 					return response.json();
@@ -2077,7 +2077,7 @@
 			const resultsDiv = document.getElementById("searchOutputList");
 			resultsDiv.style.display = 'grid';
 			resultsDiv.innerHTML = "<div class='loader'></div>";
-			fetch("https://adthoughtsglobal.github.io/Nova-Store/db/v2.json")
+			fetch('../assets/json/store-v2.json')
 				.then(response => response.json())
 				.then(data => {
 					const threshold = 0.6;

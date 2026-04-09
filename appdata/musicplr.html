@@ -1211,12 +1211,12 @@
 		}
 
 		async function vizchange() {
-			let fetched = await fetch("https://novaos-web.github.io/plr/visualizerDB.json");
+			let fetched = await fetch('../assets/json/visualizerDB.json');
 			let items = await fetched.json();
 			items.push("Custom URL");
 			const url = await window.parent.showDropdownModal("Choose a visualizer", "Click on custom URL to use a custom visualizer.", items);
 			if (url != "Custom URL") {
-				loadVisualizerFromURL(`https://novaos-web.github.io/plr/visualizers/${url}.js`);
+				loadVisualizerFromURL(`../assets/js/visualizers/${url}.js`);
 			} else {
 				const customUrl = await window.parent.ask("Custom Visualizer URL");
 				if (customUrl) {

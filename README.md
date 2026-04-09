@@ -110,3 +110,23 @@ These external dependencies that will break when offline:
 - **Rotur**: Falls back to default server (has error handling)
 
 These are **functional** external dependencies (APIs/data), not static assets. The self-hosted assets (JS/CSS/fonts) are all local - these are live data sources that intentionally require internet. 
+
+## **Offline Update:**
+store.html:
+https://adthoughtsglobal.github.io/Nova-Store/db/themes.json → ../assets/json/themes.json
+https://adthoughtsglobal.github.io/Nova-Store/db/v2.json → ../assets/json/store-v2.json (3 occurrences)
+https://adthoughtsglobal.github.io/ → ../assets/store/ (app installation source)
+musicplr.html:
+https://novaos-web.github.io/plr/visualizerDB.json → ../assets/json/visualizerDB.json
+https://novaos-web.github.io/plr/visualizers/*.js → ../assets/js/visualizers/*.js
+rotur.js:
+https://raw.githubusercontent.com/Mistium/Origin-OS/main/Resources/info.json → ../assets/json/rotur-info.json
+https://raw.githubusercontent.com/RoturTW/Badges/main/badges.json → ../assets/json/rotur-badges.json
+Files Downloaded:
+store-v2.json (App store database)
+themes.json (Theme database)
+visualizerDB.json (Visualizer database)
+rotur-info.json (Rotur server config)
+rotur-badges.json (Rotur badges)
+visualizers - 7 visualizer scripts (blobs.js, classic.js, disc.js, fluid.js, fractal.js, lines.js, waveform.js)
+store - Empty directory ready for app installations
