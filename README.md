@@ -95,38 +95,36 @@ These external dependencies that will break when offline:
 
 | File | External URL | Purpose |
 |------|-------------|---------|
-| [store.html](cci:7://file:///NovaOS/appdata/store.html:0:0-0:0) | `adthoughtsglobal.github.io/Nova-Store/db/v2.json` | App store database |
-| [store.html](cci:7://file:///NovaOS/appdata/store.html:0:0-0:0) | `adthoughtsglobal.github.io/Nova-Store/db/themes.json` | Theme database |
-| [store.html](cci:7://file:///NovaOS/appdata/store.html:0:0-0:0) | `adthoughtsglobal.github.io/` | App installation source |
-| [musicplr.html](cci:7://file:///NovaOS/appdata/musicplr.html:0:0-0:0) | `novaos-web.github.io/plr/visualizerDB.json` | Visualizer database |
-| [musicplr.html](cci:7://file:///NovaOS/appdata/musicplr.html:0:0-0:0) | `novaos-web.github.io/plr/visualizers/*.js` | Visualizer scripts |
 | [liza.html](cci:7://file:///NovaOS/appdata/liza.html:0:0-0:0) | `en.wikipedia.org/w/api.php` | Wikipedia API for chat |
-| [rotur.js](cci:7://file:///NovaOS/scripts/rotur.js:0:0-0:0) | `raw.githubusercontent.com/...` | Server config & badges |
 
-## **Offline Impact:**
-- **Store app**: Won't load apps/themes (expected - it's a content store)
-- **Music player**: Visualizers won't work (core player still works)
-- **Liza chat**: Can't fetch Wikipedia info (chat still works)
-- **Rotur**: Falls back to default server (has error handling)
+## **Now Available Offline:**
 
-These are **functional** external dependencies (APIs/data), not static assets. The self-hosted assets (JS/CSS/fonts) are all local - these are live data sources that intentionally require internet. 
+### Store App
 
-## **Offline Update:**
-store.html:
-https://adthoughtsglobal.github.io/Nova-Store/db/themes.json → ../assets/json/themes.json
-https://adthoughtsglobal.github.io/Nova-Store/db/v2.json → ../assets/json/store-v2.json (3 occurrences)
-https://adthoughtsglobal.github.io/ → ../assets/store/ (app installation source)
-musicplr.html:
-https://novaos-web.github.io/plr/visualizerDB.json → ../assets/json/visualizerDB.json
-https://novaos-web.github.io/plr/visualizers/*.js → ../assets/js/visualizers/*.js
-rotur.js:
-https://raw.githubusercontent.com/Mistium/Origin-OS/main/Resources/info.json → ../assets/json/rotur-info.json
-https://raw.githubusercontent.com/RoturTW/Badges/main/badges.json → ../assets/json/rotur-badges.json
-Files Downloaded:
-store-v2.json (App store database)
-themes.json (Theme database)
-visualizerDB.json (Visualizer database)
-rotur-info.json (Rotur server config)
-rotur-badges.json (Rotur badges)
-visualizers - 7 visualizer scripts (blobs.js, classic.js, disc.js, fluid.js, fractal.js, lines.js, waveform.js)
-store - Empty directory ready for app installations
+| File | Previous URL | Local Path |
+|------|--------------|------------|
+| store.html | `adthoughtsglobal.github.io/Nova-Store/db/v2.json` | `../assets/json/store-v2.json` |
+| store.html | `adthoughtsglobal.github.io/Nova-Store/db/themes.json` | `../assets/json/themes.json` |
+| store.html | `adthoughtsglobal.github.io/` | `../assets/store/` |
+
+### Music Player
+
+| File | Previous URL | Local Path |
+|------|--------------|------------|
+| musicplr.html | `novaos-web.github.io/plr/visualizerDB.json` | `../assets/json/visualizerDB.json` |
+| musicplr.html | `novaos-web.github.io/plr/visualizers/*.js` | `../assets/js/visualizers/*.js` |
+
+### Rotur Integration
+
+| File | Previous URL | Local Path |
+|------|--------------|------------|
+| rotur.js | `raw.githubusercontent.com/Mistium/Origin-OS/.../info.json` | `../assets/json/rotur-info.json` |
+| rotur.js | `raw.githubusercontent.com/RoturTW/Badges/.../badges.json` | `../assets/json/rotur-badges.json` |
+
+### Downloaded Assets
+
+| Location | Files |
+|----------|-------|
+| `assets/json/` | store-v2.json, themes.json, visualizerDB.json, rotur-info.json, rotur-badges.json |
+| `assets/js/visualizers/` | blobs.js, classic.js, disc.js, fluid.js, fractal.js, lines.js, waveform.js |
+| `assets/store/` | Empty directory for app installations |
