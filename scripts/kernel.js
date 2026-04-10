@@ -270,7 +270,7 @@ class NTXSession {
 var ntxSession = new NTXSession();
     console.log("this frame is responding");
 </script>`;
-    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"></head><body>${contentString}${ntxScript}<script defer>window.parent.postMessage({type:"iframeReady",windowID:"${winuid}"}, "*");</script></body></html>`;
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><base href="${window.location.origin}/"></head><body>${contentString}${ntxScript}<script defer>window.parent.postMessage({type:"iframeReady",windowID:"${winuid}"}, "*");</script></body></html>`;
     return new Blob([html], { type: 'text/html' });
 }
 
@@ -456,7 +456,7 @@ const eventBus = (() => {
 </script>
 `;
 
-    const fullBlobHTML = `<!DOCTYPE html><html><head><meta charset="utf-8">${styleBlock}</head><body>${contentString}${ctxScript ? `<script>${ctxScript}</script>` : ''}${ntxScript}<script defer>window.parent.postMessage({type:"iframeReady",windowID:"${winuid}"}, "*");</script></body></html>`;
+    const fullBlobHTML = `<!DOCTYPE html><html><head><meta charset="utf-8"><base href="${window.location.origin}/">${styleBlock}</head><body>${contentString}${ctxScript ? `<script>${ctxScript}</script>` : ''}${ntxScript}<script defer>window.parent.postMessage({type:"iframeReady",windowID:"${winuid}"}, "*");</script></body></html>`;
 
     return new Blob([fullBlobHTML], { type: 'text/html' });
 }

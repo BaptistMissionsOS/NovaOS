@@ -163,13 +163,16 @@
 		}
 	</style>
 
-	<link rel="stylesheet" href="../assets/css/fonts-local.css">
-	<link rel="stylesheet" type="text/css" href="../assets/css/semantic-ui.min.css">
-	<link rel="stylesheet" href="../assets/css/ace.min.css">
-	<script src="../assets/js/js-beautify.min.js"></script>
-	<script src="../assets/js/jquery-3.1.1.min.js"></script>
-	<script src="../assets/js/semantic-ui.min.js"></script>
-	<script src="../assets/js/ace.min.js"></script>
+	<link rel="stylesheet" href="/assets/css/fonts-local.css">
+	<link rel="stylesheet" type="text/css" href="/assets/css/semantic-ui.min.css">
+	<link rel="stylesheet" href="/assets/css/ace.min.css">
+	<script src="/assets/js/js-beautify.min.js"></script>
+	<script src="/assets/js/jquery-3.1.1.min.js"></script>
+	<script src="/assets/js/semantic-ui.min.js"></script>
+	<script src="/assets/js/ace.min.js"></script>
+	<script src="/assets/js/theme-monokai.js"></script>
+	<script src="/assets/js/mode-html.js"></script>
+	<script src="/assets/js/mode-javascript.js"></script>
 </head>
 
 <body>
@@ -343,31 +346,47 @@
 
 		var editor;
 		var wordwrap = false;
+		document.addEventListener('DOMContentLoaded', function() {
 		try {
-			$('.ui.dropdown').dropdown({
-				action: 'hide'
-			});
+			console.log("Studio: Starting Ace init...");
+			console.log("Studio: jQuery:", typeof $, "ace:", typeof ace);
+			
+			if (typeof $ !== 'undefined') {
+				$('.ui.dropdown').dropdown({ action: 'hide' });
+			}
 
+			ace.config.set('basePath', '/assets/js');
+			ace.config.set('workerPath', '/assets/js');
+			ace.config.set('themePath', '/assets/js');
+			ace.config.set('modePath', '/assets/js');
+			ace.config.set("loadWorkerFromBlob", false);
+			
+			console.log("Studio: Creating editor...");
 			editor = ace.edit("editor");
+			console.log("Studio: Editor created:", editor);
+			
 			editor.setTheme("ace/theme/monokai");
+			editor.session.setMode("ace/mode/html");
 			editor.session.setUseWrapMode(true);
+			
 			wordwrap = true;
 			let wordwrapdisp = gid("wordwrapdisp");
 			if (wordwrapdisp) wordwrapdisp.innerHTML = "On";
+			console.log("Studio: Ace init complete!");
 		} catch (e) {
-			console.error("Ace editor failed to load:", e);
+			console.error("Studio: Ace editor failed:", e);
 			editor = {
-				getValue: () => {
-					return document.getElementById("editortextarea").value;
-				},
-				setValue: (newValue) => {
-					document.getElementById("editortextarea").value = newValue;
-				}
+				getValue: () => document.getElementById("editortextarea").value,
+				setValue: (newValue) => document.getElementById("editortextarea").value = newValue
 			};
 			document.getElementById("editortextarea").style.display = "block";
 		}
+		
+		setUpForHTML()
+		run()
+	});
 
-		function showFindBox() {
+	function showFindBox() {
 			if (editor.execCommand) editor.execCommand("find");
 		}
 
@@ -390,10 +409,7 @@
 			window.top.openwindow('App Preview', prog)
 		}
 
-		setUpForHTML()
-		run()
-
-		function setUpForHTML() {
+	function setUpForHTML() {
 			editor.session.setMode("ace/mode/html");
 			editor.setValue(`<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
